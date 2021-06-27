@@ -48,7 +48,7 @@ ordemDec (x:xs) = ordemDec (ma ++ [x] ++ ordemDec mn)
 
 testaDec x = x == (ordemDec x)
 
--- ehDescrescente lista =  lista == (ordDecres lista)
+-- DAQUI EM DIANTE RESOLUÇÃO EM PROGRESSO
 
 --b) usando apenas recursão:
 
