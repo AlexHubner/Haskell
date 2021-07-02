@@ -3,9 +3,28 @@
 
 diferenca xs ys = [a|a <- xs++ys, notElem a ys]
 
+--OU
+
+diferenca2 :: [Int] -> [Int] -> [Int]
+diferenca2 xs [] = xs
+diferenca2 [] ys = ys
+diferenca2 (x:xs)  ys = diferenca2 (tirar x xs) (tirar x ys)
+            where tirar elem [] = []
+                  tirar elem (x:xs)
+                        | x == elem = tirar elem xs
+                        | otherwise = x : (tirar elem xs)
+
 --b) Retorna a interseção entre duas listas. O resultado é uma lista.
 
 inter xs ys = [a|a <- xs, elem a ys]
+
+--OU
+inter2 :: [Int] -> [Int] -> [Int]
+inter2 xs [] = xs
+inter2 [] ys = ys
+inter2 (x:xs) ys
+      | x `elem` ys = x: inter2 xs ys
+      | otherwise = inter2 xs ys
 
 --c) Retorna a união entre duas listas (pode haver repetição de elementos). O resultado é uma lista.
 
