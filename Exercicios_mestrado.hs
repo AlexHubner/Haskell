@@ -6,13 +6,10 @@ diferenca xs ys = [a|a <- xs++ys, notElem a ys]
 --OU
 
 diferenca2 :: [Int] -> [Int] -> [Int]
-diferenca2 xs [] = xs
-diferenca2 [] ys = ys
-diferenca2 (x:xs)  ys = diferenca2 (tirar x xs) (tirar x ys)
-            where tirar elem [] = []
-                  tirar elem (x:xs)
-                        | x == elem = tirar elem xs
-                        | otherwise = x : (tirar elem xs)
+diferenca2 [] y = []
+diferenca2 (x:xs) y 
+        | elem x y = diferenca2 xs y    
+        | otherwise = x : (diferenca2 xs y)
 
 --b) Retorna a interseção entre duas listas. O resultado é uma lista.
 
@@ -25,6 +22,8 @@ inter2 [] ys = ys
 inter2 (x:xs) ys
       | x `elem` ys = x: inter2 xs ys
       | otherwise = inter2 xs ys
+
+
 
 --c) Retorna a união entre duas listas (pode haver repetição de elementos). O resultado é uma lista.
 
@@ -70,6 +69,10 @@ testaDec x = x == (ordemDec x)
 
 --b) usando apenas recursão:
 
+testaDec2 :: [Int] -> Bool
+testaDec2 [] = False
+testaDec2 [a] = True
+testaDec2 (a:b:xs) = a >= b && testaDec2 (b:xs)
 
 
  --c) usando fold, map e zip.
