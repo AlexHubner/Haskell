@@ -98,9 +98,13 @@ testaDec2 (a:b:xs) = a >= b && testaDec2 (b:xs)
 
 
 --c) usando fold, map e zip.
-testaDec3 x = foldr (&&) (map (\(a,b) -> a>=b) (zip x)
+testaDec3 x = fold (&&) (map (\(a,b) -> a>=b) (zip x) )
 
 --Entendendo:
 --foldr vai aplicar a função (&&) nas funções map e zip
 --map vai testar se um elemento é maior do que o outro
 --zip vai agrupando os elementos em pares
+
+fold :: (t -> t -> t) -> [t] -> t
+fold f [a] = a
+fold f (a:as) = f a (fold f as)
