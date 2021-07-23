@@ -77,21 +77,32 @@ eCrescente f x = if (x > 0) && (f x > f (x-1)) then eCrescente f (x-1) --verific
 quadrado :: Int -> Int
 quadrado x = x * x
 
+--casoTeste 1 = quadrado 2 = 4
+--casoTeste 2 = quadrado 120 = 14400
+
 --2º Implementar uma função map que aplique a função quadrado a todos os elementos de uma lista
-mapQuadrado :: (Int -> Int) -> [Int] -> [Int]
-mapQuadrado _ [] = []
-mapQuadrado f (x:xs) = (f x) : (mapQuadrado f xs) 
---Estudo de Caso: dada uma lista com os valores [10, 20, 30] retornar uma lista com o dobro de cada elemento [100,400,900]
+mapQuadrado :: [Int] -> [Int]
+mapQuadrado x = map quadrado x
+
+--casoTeste 1 = quadrado [10,20,30] = [100,400,900]
+--casoTeste 2 = quadrado 120 = 14400
 
 -- retorna a soma dos quadrados dos itens
 
---somaQuadrados :: [Int] -> Int
---somaQuadrados (lista) = foldl1 (+) 0 (mapQuadrado lista)
---Estudo de Caso: Usando a mesma lista do caso anterior retornar o valor da soma dos quadrados dos elementos
+somaQuadrados :: [Int] -> Int
+somaQuadrados lista = foldr (+) 0 (mapQuadrado lista)
+
+--casoTeste 1 = lista [10,20,30] = 1400
+--casoTeste 1 = lista [6,5,8] = 125
 
 -- Manter na lista todos os itens maiores que zero.
 maiorQueZero :: [Int] -> [Int]
 maiorQueZero lista = filter f lista 
     where f n = n > 0
 
---Estudo de caso: dada uma lista [0,2,8,0,10] retornar uma lista somente com valores maiores que zero
+--casoTeste 1 = [0,2,8,0,10] = [2,8,10]
+--casoTeste 2 = [100,23,0,45,69] = [100,23,45,69]
+
+fold :: (t -> t -> t) -> [t] -> t
+fold f [a] = a
+fold f (a:as) = f a (fold f as)
