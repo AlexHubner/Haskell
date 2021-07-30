@@ -204,3 +204,14 @@ addNum n = (n+)
 
 casoTesteQ5 = addNum 10 20  == 30
 casoTesteQ5_2 = addNum 5 6 == 11
+
+--6) Resolva em Haskell o seguinte problema: a partir de duas notas das provas de cada aluno,  determinar 
+--a lista dos alunos aprovados, com suas respectivas médias. O resultado deve estar ordenado crescentemente pela média 
+--aritmética das notas. A aprovação ocorre se, e somente se, tal média é maior ou igual a cinco.
+
+--Função para ordenar os elementos de uma lista de forma crescente
+ordemCres :: Ord a => [a] -> [a]
+ordemCres [] = []
+ordemCres (x:xs) = ordemCres ma ++ [x] ++ ordemCres mn
+                    where ma = [e | e <- xs, e < x]
+                          mn = [e | e <- xs, e > x]
