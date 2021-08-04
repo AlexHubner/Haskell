@@ -23,3 +23,8 @@ casoTesteSMatriz = somaMat [[1,2,3], [4,5,6]] [[3,2,1], [6,5,4]] == [[4,4,4], [1
 casoTesteSMatriz2 = somaMat [[12,23,45], [6,13,9]] [[33,42,61], [26,55,44]] == [[45,65,106],[32,68,53]]
 
 resultadoCasosSM = foldl (&&) True [casoTesteSMatriz, casoTesteSMatriz2]
+
+multList lista1 lista2 = zipWith (*) lista1 lista2
+
+multMat :: Num a => [[a]] -> [[a]] -> [[a]]
+multMat l1 l2 = zipWith multList l1 l2
