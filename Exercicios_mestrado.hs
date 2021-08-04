@@ -209,9 +209,13 @@ casoTesteQ5_2 = addNum 5 6 == 11
 --a lista dos alunos aprovados, com suas respectivas médias. O resultado deve estar ordenado crescentemente pela média 
 --aritmética das notas. A aprovação ocorre se, e somente se, tal média é maior ou igual a cinco.
 
---Função para ordenar os elementos de uma lista de forma crescente
 ordemCres :: Ord a => [a] -> [a]
 ordemCres [] = []
 ordemCres (x:xs) = ordemCres ma ++ [x] ++ ordemCres mn
                     where ma = [e | e <- xs, e < x]
                           mn = [e | e <- xs, e > x]
+
+media turma = map (\(x,y) -> (y,x)) 
+                  (ordemCres [((n1+n2)/2, n)| (n,n1,n2) <- turma , ((n1+n2)/2)>= 5] )
+                  
+exemploturma = [("jose",7.0,9.0),("pedro",8.0,5.0),("maria",9.0,10.0),("xyz",5.0,3.0)]
