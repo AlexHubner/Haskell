@@ -1,0 +1,49 @@
+Prog. Program  ::= [ClassDeclaration] ;
+ClassD. ClassDeclaration ::= "class" Ident "{"  [MemberDeclaration] "}" ;
+
+Attr. MemberDeclaration ::=  Decl ";" ; 
+Mth.  MemberDeclaration ::=  Type Ident "(" [Decl] ")" "{" [Stm] "}" ;
+   
+Dec. Decl ::= Type Ident ;
+
+comment "//" ;
+comment "/*" "*/" ;
+
+terminator Stm "" ;
+terminator ClassDeclaration "" ;
+terminator MemberDeclaration "";
+separator  Decl "," ;
+separator  Exp "," ;
+
+SDec.    Stm ::= Decl ";" ;
+SExp.    Stm ::= Exp ";" ;
+SAss.    Stm ::= Ident "=" Exp ";" ;
+SBlock.  Stm ::= "{" [Stm] "}" ;
+SWhile.  Stm ::= "while" "(" Exp ")" Stm ;
+SReturn. Stm ::= "return" Exp  ";" ;
+SIf.     Stm ::= "if" "(" Exp ")" "then" Stm "else" Stm ;
+
+EOr.  Exp1 ::= Exp1 "||" Exp2 ;
+EAnd. Exp2 ::= Exp2 "&&" Exp3 ;
+ENot. Exp3 ::= "!" Exp3 ;
+ECon. Exp4  ::= Exp4  "++" Exp5 ;
+EAdd. Exp4  ::= Exp4  "+" Exp5 ;
+ESub. Exp4  ::= Exp4  "-" Exp5 ;
+EMul. Exp5  ::= Exp5 "*" Exp6 ;
+EDiv. Exp5  ::= Exp5 "/" Exp6 ;
+EMthCall. Exp6  ::= Ident "." Ident "(" [Exp] ")"  ;
+ENew. Exp7  ::= "new" Ident "()";
+EInt. Exp8  ::= Integer ;
+EVar. Exp8  ::= Ident ;
+EStr. Exp8  ::= String ;
+ETrue. Exp8 ::= "true" ;
+EFalse. Exp8 ::= "false" ;
+
+Tbool.  Type ::= "bool" ;
+Tint.   Type ::= "int" ;
+Tvoid.  Type ::= "void"  ;
+TStr.   Type ::= "String" ;
+TClass. Type ::= Ident ;
+ 
+coercions Exp 8 ;
+

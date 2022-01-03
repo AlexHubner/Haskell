@@ -1,0 +1,19 @@
+class Aluno {
+ String nome;
+ int idade;
+ 
+ void main ( ) {
+   Aluno aluno;
+   aluno = new Aluno();
+   aluno.setNome ("Jose");
+   aluno.setIdade (20);
+ }
+  
+ void setNome (String n) {
+   nome = n;
+ }
+ 
+ void setIdade (int i) {
+   idade = i;
+ }
+}

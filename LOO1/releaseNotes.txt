@@ -1,0 +1,9 @@
+Limitações da LOO1
+
+-> contexto estático só pode ter um método, ou seja, o main não pode fazer chamada de método que não 
+   seja de um objeto. Essa limitação pode ser tratada escrevendo-se o código estático no main. A
+   desvantagem é que o método poderia ficar grande. De qualquer forma, código estático é geralmente mair curto.
+   
+-> o parsing de lista vazia de argumentos em chamada de método exisge espaço entre os parênteses.
+
+-> type checker ainda não implementado.
