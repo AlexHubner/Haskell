@@ -60,10 +60,6 @@ data Exp = LitBool {tipoexp :: Maybe Tipo, valorbool :: Bool}
         | Relac {tipoexp :: Maybe Tipo, corpo :: Exp, tp :: Tipo}
 
 
-
--- Checar se um nome é um construtor:
-eNomeConstrutor = (=="init")
-
 -- Criar vírgula
 virg :: Show v => [v] -> String
 virg = intercalate ", " . map show
