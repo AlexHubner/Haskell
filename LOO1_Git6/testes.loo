@@ -1,0 +1,13 @@
+class Teste {
+ String var;
+
+ void main ( ) {
+   Teste teste;
+   teste = new Teste();
+   teste.setVar ("Testando");
+ }
+
+ void setVar (String v) {
+   var = v;
+ }
+}
